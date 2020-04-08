@@ -40,7 +40,8 @@
 
         <script>
             $(document).ready(function () {
-                var hash = window.location.hash;
+                var hash = window.location.hash.replace('#', '');
+                console.log('hash', hash.replace('#', ''))
                 console.log('Document Ready')
                 var url = 'https://oxyzonk.pythonanywhere.com/attd' + hash;
 
