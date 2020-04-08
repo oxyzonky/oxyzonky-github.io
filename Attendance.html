@@ -1,0 +1,94 @@
+<htm>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+        <!-- <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script> -->
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://kendo.cdn.telerik.com/2020.1.406/js/kendo.all.min.js"></script>
+        <!-- <script src="https://kendo.cdn.telerik.com/2020.1.406/js/kendo.timezones.min.js"></script> -->
+        <link href="https://kendo.cdn.telerik.com/2020.1.406/styles/kendo.default-v2.min.css" rel="stylesheet">
+        <link href="https://kendo.cdn.telerik.com/2020.1.406/styles/kendo.default-v2.mobile.min.css" rel="stylesheet-disabled">
+        <!-- <link href="/kendo-ui/content/shared/styles/examples.css?v=2020.1.406" rel="stylesheet"> -->
+    </head>
+
+    <body>
+
+        <table id="attendance" class="display">
+            <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Timestamp</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <!-- <tbody>
+            <tr>
+                <td>Row 1 Data 1</td>
+                <td>Row 1 Data 2</td>
+            </tr>
+            <tr>
+                <td>Row 2 Data 1</td>
+                <td>Row 2 Data 2</td>
+            </tr>
+        </tbody> -->
+        </table>
+
+        <script>
+            $(document).ready(function () {
+                console.log('Document Ready')
+                var url = 'http://oxyzonk.pythonanywhere.com/attd';
+
+
+                // $('#attandance').DataTable( {
+                //     ajax: {
+                //         url: url,
+                //         dataSrc: ''
+                //     },
+                //     rowGroup: {
+                //         dataSrc: [ 0 ]
+                //     },
+                //     columnDefs: [ {
+                //         targets: [ 0 ],
+                //         visible: false
+                //     } ]
+                // } );
+
+
+                $(document).ready(function () {
+                    $("#attendance").kendoGrid({
+                        dataSource: {
+                            transport: {
+                                read: url
+                            },
+                            pageSize: 20
+                        },
+                        height: 550,
+                        groupable: true,
+                        sortable: true,
+                        pageable: {
+                            refresh: true,
+                            pageSizes: true,
+                            buttonCount: 5
+                        },
+                        columns: [{
+                            field: "username",
+                            title: "User Name",
+                            width: 240
+                        }, {
+                            field: "timestamp",
+                            title: "Timestamp"
+                        }, {
+                            field: "type",
+                            title: "Type"
+                        }]
+                    });
+                });
+
+            });
+        </script>
+    </body>
+</htm>
