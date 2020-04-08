@@ -40,8 +40,9 @@
 
         <script>
             $(document).ready(function () {
+                var hash = window.location.hash;
                 console.log('Document Ready')
-                var url = 'https://oxyzonk.pythonanywhere.com/attd';
+                var url = 'https://oxyzonk.pythonanywhere.com/attd/' + hash;
 
 
                 // $('#attandance').DataTable( {
