@@ -63,6 +63,12 @@
 
                 $(document).ready(function () {
                     $("#attendance").kendoGrid({
+                        toolbar: ["excel"],
+                        excel: {
+                            fileName: "Kendo UI Grid Export.xlsx",
+                            proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
+                            filterable: true
+                        },
                         dataSource: {
                             transport: {
                                 read: url
